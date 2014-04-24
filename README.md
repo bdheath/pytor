@@ -16,7 +16,7 @@ requirements
 usage 
 =====
 
-'''python
+'''py
 from pytor import pytor
 
 tor = pytor()
