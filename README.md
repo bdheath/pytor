@@ -15,14 +15,12 @@ requirements
 
 usage 
 =====
+Create a basic Pytor instance and send a simple http request:
 ...
-'''py
+
 from pytor import pytor
 
 tor = pytor()
 html = tor.get('http://bradheath.org')
-print tor.ip()
-tor.new_identity()
-print tor.ip()
-'''
+
 ...
