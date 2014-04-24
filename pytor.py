@@ -21,6 +21,7 @@ import datetime
 
 class pytor:
 
+	controlPort = 9051
 	port = 9050
 	host = 'localhost'
 	_version = 0.1
@@ -31,7 +32,7 @@ class pytor:
 	_ip = None
 	browser = None
 	
-	torControl = Controller.from_port(port=9051)
+	torControl = Controller.from_port(port=controlPort)
 
 	def __init__(self, host='localhost', port=9050):
 		socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, host, port)

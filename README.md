@@ -14,7 +14,7 @@ requirements
 
 assumptions
 ===========
-For now, Pytor assumes your proxy is running on localhost at port 9050, and that the control port is set to 9051. If your configuration is different, you can edit the global variables at the top to adjust. **Future versions** will acommodate different ports and authentication passwords.
+For now, Pytor assumes that your Tor control port is set to 9051. If your configuration is different, you can edit the global variables at the top to adjust. **Future versions** will acommodate different ports and authentication passwords.
 
 usage 
 =====
@@ -23,6 +23,12 @@ Create a basic Pytor instance and send a simple http request:
 from pytor import pytor
 
 tor = pytor()
+html = tor.get('http://bradheath.org')
+```
+Or, if your Tor configuration requires a different host or port:
+```python
+from pytor import pytor
+tor = pytor(host='localhost', port=9055)
 html = tor.get('http://bradheath.org')
 ```
 
