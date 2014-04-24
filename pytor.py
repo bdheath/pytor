@@ -41,7 +41,7 @@ class pytor:
 		return
 		
 	def get(self, url):		
-		self.check_identity_time()
+		self._checkIdentityTime()
 		request = urllib2.Request(url)
 		request.add_header('Cache-Control','max-age=0')
 		response = urllib2.urlopen(request)
@@ -50,8 +50,8 @@ class pytor:
 		return self._last_result
 
 	def ip(self):
-		self.ip = self.get('http://ifconfig.me/ip')
-		return self.ip
+		self._ip = self.get('http://ifconfig.me/ip')
+		return self._ip
 
 	def downloadFile(self, url, file):
 		self._checkIdentityTime()
