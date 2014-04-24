@@ -16,6 +16,7 @@ requirements
 usage 
 =====
 
+'''python
 from pytor import pytor
 
 tor = pytor()
@@ -23,3 +24,4 @@ html = tor.get('http://bradheath.org')
 print tor.ip()
 tor.new_identity()
 print tor.ip()
+'''
