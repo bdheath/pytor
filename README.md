@@ -19,7 +19,7 @@ For now, Pytor assumes your proxy is running on localhost at port 9050, and that
 usage 
 =====
 Create a basic Pytor instance and send a simple http request:
-```python
+```Python
 from pytor import pytor
 
 tor = pytor()
