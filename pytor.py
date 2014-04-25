@@ -30,14 +30,22 @@ class pytor:
 	_id_time = None
 	_last_id_time = None
 	_ip = None
+	_connected = False
 	browser = None
 	
-	torControl = Controller.from_port(port=controlPort)
+	try:
+		torControl = Controller.from_port(port=controlPort)
+		_connected = True
+	except:
+		_connected = False
 
 	def __init__(self, host='localhost', port=9050):
-		socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, host, port)
-		socket.socket = socks.socksocket
-		self._last_id_time = datetime.datetime.now()
+		if self._connected:
+			socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, host, port)
+			socket.socket = socks.socksocket
+			self._last_id_time = datetime.datetime.now()
+		else:
+			print "### ERROR: Could not establish a Tor connection!"
 		return
 		
 	def get(self, url):		
@@ -50,7 +58,7 @@ class pytor:
 		return self._last_result
 
 	def ip(self):
-		self._ip = self.get('http://ifconfig.me/ip')
+		self._ip = self.get('http://bradheath.org/ip')
 		return self._ip
 
 	def downloadFile(self, url, file):
@@ -83,3 +91,4 @@ class pytor:
 	def mechanizeBrowser(self):
 		self.browser = mechanize.Browser()
 		return self.browser
+
