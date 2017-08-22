@@ -8,18 +8,8 @@ Pytor allows you to channel simple http requests through a Tor proxy. It also al
 Requirements
 ============
 * A functioning (and running) instance of Tor. This could be the basic Tor Browser Bundle. For more configuration options, consider using the Tor Expert Bundle, available from https://www.torproject.org/download/download.html.en. 
-* SocksiPy for handling socks requests (unpack to lib/site-packages), available from http://sourceforge.net/projects/socksipy/.
 * Mechanize (install through pip)
-* Stem (install through pip)
-
-Assumptions (because it's not done yet)
-===========
-For now, Pytor assumes that your Tor control port is set to 9051. If your configuration is different, you can edit the global variables at the top to adjust. **Future versions** will acommodate different ports and authentication passwords.
-
-Next steps
-==========
-Future iterations of Pytor will:
-* Allow support for different Tor control ports and authentication
+* Stem (install through pip or apt-get)
 
 Basic usage
 =====
@@ -45,6 +35,11 @@ print tor.ip()
 Download a file:
 ```python
 tor.downloadFile(url, local_filename)
+```
+You can also configure Pytor to set up a control connection to your Tor instance. That enables you to do things like ask Tor to change your circuit. 
+
+```python
+tor = pytor( port = 9050, controller = True, controlPort = 9051, password='Your-non-hashed-password')
 ```
 
 Request a new identity from Tor: (Note that the network won't always assign you one, and even when it does, you may end up with the same exit node and therefore the same IP address. Also note that you shouldn't change your identity too ofen to avoid stressing the network.)
